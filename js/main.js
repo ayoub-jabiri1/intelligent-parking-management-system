@@ -1,6 +1,6 @@
 // 1. <-- Main Selectors -->
 
-let parkBtn = document.getElementById("park-btn"),
+let parkPopup = document.getElementById("park-vehicle-popup"),
     parkingLotsBox = document.getElementById("parking-lots"),
     availableLots = document.getElementById("available-lots"),
     totalLots = document.getElementById("total-lots");
@@ -50,8 +50,46 @@ let parkingLots = [
     },
 ];
 
+let vehicles = [];
+
 // 3. <-- Set Main Elements in Page
+
 setMainElementsInPage();
+
+// 4. <-- Toggle Park Pop up -->
+
+document.getElementById("park-popup-btn").addEventListener("click", () => {
+    parkPopup.classList.replace("hidden", "flex");
+});
+
+document.getElementById("cancel-btn").addEventListener("click", () => {
+    parkPopup.classList.replace("flex", "hidden");
+});
+
+// 5. <-- Get Vehicle Data -->
+
+let plateNumberInp = document.getElementById("plate-number-input"),
+    parkDurationInp = document.getElementById("park-duration-input"),
+    vehicleType = document.getElementById("vehicle-type");
+
+document.getElementById("park-btn").addEventListener("click", () => {
+    let currentPlateNumber = plateNumberInp.value,
+        currentParkDuration = parkDurationInp.value,
+        currentVehicleType = vehicleType.value;
+
+    if (
+        currentPlateNumber != "" &&
+        currentParkDuration != "" &&
+        currentVehicleType != ""
+    ) {
+        vehicles.push({
+            plateNumber: currentPlateNumber,
+            type: currentVehicleType,
+            entryTime: new Date().toLocaleString("en-CA"),
+            parkDuration: currentParkDuration,
+        });
+    }
+});
 
 // Functions
 
@@ -82,7 +120,3 @@ function setMainElementsInPage() {
 
     totalLots.innerHTML = parkingLots.length;
 }
-
-parkBtn.addEventListener("click", () => {
-    console.log("ggggg");
-});

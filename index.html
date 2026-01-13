@@ -15,13 +15,13 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
-        <div id="app" class="bg-[#eee] w-screen h-screen p-4">
+        <div id="app" class="bg-[#eee] w-screen h-screen p-4 overflow-hidden">
             <div class="container mx-auto">
                 <h1 class="text-3xl font-bold text-center">
                     Intelligent Parking Management System
                 </h1>
                 <button
-                    id="park-btn"
+                    id="park-popup-btn"
                     class="bg-[#2196F3] text-white text-xl font-bold px-4 py-2 rounded-[10px] block mt-10 mx-auto cursor-pointer"
                 >
                     Park a vehicle
@@ -29,10 +29,47 @@
                 <!-- Start Park a Vehicle Pop up -->
                 <div
                     id="park-vehicle-popup"
-                    class="fixed top-0 left-0 w-screen h-screen bg-[#00000066] flex justify-center items-center"
+                    class="fixed top-0 left-0 w-screen h-screen bg-[#00000066] hidden justify-center items-center"
                 >
-                    <div class="bg-white p-4 w-[75%] rounded-[10px]">
-                        <h2>Park a Vehicle</h2>
+                    <div class="bg-white p-4 w-fit rounded-[10px]">
+                        <h2 class="text-center mb-4">Park a Vehicle</h2>
+                        <div class="flex flex-col gap-3">
+                            <input
+                                id="plate-number-input"
+                                type="text"
+                                placeholder="Enter the vehicle plate number..."
+                                class="w-[300px] bg-[#eee] border border-black p-2 outline-none"
+                            />
+                            <input
+                                id="park-duration-input"
+                                type="number"
+                                placeholder="Enter the parking duration..."
+                                class="w-[300px] bg-[#eee] border border-black p-2 outline-none"
+                            />
+                            <select
+                                id="vehicle-type"
+                                class="w-[300px] bg-[#eee] border border-black p-2 outline-none"
+                            >
+                                <option value="">Enter the vehicle type</option>
+                                <option value="motocycle">Motocycle</option>
+                                <option value="car">Car</option>
+                                <option value="truck">Truck</option>
+                            </select>
+                            <div class="flex justify-center gap-3">
+                                <button
+                                    id="park-btn"
+                                    class="bg-[#2196F3] text-white text-base font-bold w-[100px] py-2 rounded-[10px] block cursor-pointer"
+                                >
+                                    Park
+                                </button>
+                                <button
+                                    id="cancel-btn"
+                                    class="bg-[#F44336] text-white text-base font-bold w-[100px] py-2 rounded-[10px] block cursor-pointer"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- End Park a Vehicle Pop up -->
